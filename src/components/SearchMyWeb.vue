@@ -73,10 +73,9 @@ const handleEnterSearch = () => {
     </div>
 
     <footer class="footer">
-      Made with feet, so feel free to give me issues
+      Made with feet, so feel free to give me <a href="https://github.com/bGZo/where-is-my-web/issues">issues</a>
       <br/>
-      <a href="/about">About</a> |
-      <a href="https://github.com/bGZo/">bGZo</a>@2025
+      <a href="https://github.com/bGZo/">bGZo</a>@2025 Inspired by my <a href="https://bgzo.github.io/vault/how-to/archive-or-cache-web-on-internet">notes</a>.
     </footer>
   </div>
 </template>
