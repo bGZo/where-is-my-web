@@ -97,9 +97,7 @@ const calculateTipShow = async () =>{
     </div>
 
     <footer class="footer">
-      Tips: paste your url in search bar, then enter or click button to search on other service.
-      <br/>
-      Inspired by my <a href="https://bgzo.github.io/vault/how-to/archive-or-cache-web-on-internet">notes</a>.
+      Service inspired by my <a href="https://bgzo.github.io/vault/how-to/archive-or-cache-web-on-internet">notes</a>.
       Feel free to give me <a href="https://github.com/bGZo/where-is-my-web/issues">issues</a>
       <br/>
       Made by <a href="https://github.com/bGZo/">bGZo</a> @ 2025
