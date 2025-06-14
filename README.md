@@ -17,37 +17,44 @@ If you don't use archive extension or singleFile, this could be help you search 
 
 ###  Setup
 
-```sh
+```shell
 npm install
 ```
 
 ### Compile and Hot-Reload for Development
 
-```sh
+```shell
 npm run dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
-```sh
+```shell
 npm run build
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
-```sh
+```shell
 npm run test:unit
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
 
-```sh
+```shell
 npm run lint
+```
+
+### Fotmat
+
+```shell
+npm run format 
 ```
 
 
 ## Thanks
 
 1. Favicon using https://github.com/ruisaraiva19/favycon
+   1. Inspired by https://en.wikipedia.org/wiki/The_Scream & 轻音少女
 2. Logo using https://excalidraw.com
-3. WebStorm
+3. Tool using https://www.jetbrains.com/webstorm/
