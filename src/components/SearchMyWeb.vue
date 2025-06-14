@@ -73,9 +73,10 @@ const handleEnterSearch = () => {
     </div>
 
     <footer class="footer">
-      Made with feet, so feel free to give me <a href="https://github.com/bGZo/where-is-my-web/issues">issues</a>
+      Inspired by my <a href="https://bgzo.github.io/vault/how-to/archive-or-cache-web-on-internet">notes</a>.
+      Feel free to give me <a href="https://github.com/bGZo/where-is-my-web/issues">issues</a>
       <br/>
-      <a href="https://github.com/bGZo/">bGZo</a>@2025 Inspired by my <a href="https://bgzo.github.io/vault/how-to/archive-or-cache-web-on-internet">notes</a>.
+      Made by <a href="https://github.com/bGZo/">bGZo</a> @ 2025
     </footer>
   </div>
 </template>
@@ -171,7 +172,7 @@ const handleEnterSearch = () => {
 .footer > a {
   color: #70757a;
   text-decoration: none;
-  padding: 0 10px;
+  padding: 0;
 }
 
 .footer > a:hover {
