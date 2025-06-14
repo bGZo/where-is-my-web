@@ -1,6 +1,15 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {nextTick, ref} from "vue";
 import logo from "/src/assets/where-is-my-web-light.excalidraw.svg"
+import search from "/src/assets/search.svg"
+import enter from "/src/assets/enter.svg"
+
+// 变量区
+
+var searchBarText = "";
+var enterIconShow = ref(false);
+
+// 方法区
 
 interface SearchMeta {
   name: string;
@@ -17,9 +26,8 @@ const SEARCH_TIP_COLUMN = ref<SearchMeta[]>([
     value: "http://archive.is/",
   },
 ]);
-var searchBarText = "";
+
 const isBlank = (param: string) => {
-  console.log(param);
   return param.trim().length === 0;
 };
 const openNewTab = (url: string) => {
@@ -35,12 +43,20 @@ const handleJumpUrl = (index: number) => {
     // archive.org
     targetUrl += "*";
   }
-  console.log(targetUrl);
   openNewTab(targetUrl);
 };
 const handleEnterSearch = () => {
   handleJumpUrl(0)
   handleJumpUrl(1)
+}
+const calculateTipShow = async () =>{
+  // NOTE:
+  // VUE2 using following:
+  // this.$set(enterIconShow, !isBlank(searchBarText))
+  // --- error use case is following:
+  // enterIconShow = ref(!isBlank(searchBarText))
+  // enterIconShow = ref(true);
+  enterIconShow.value = !isBlank(searchBarText); // NOTE: 通过 .value 修改 ref 的值
 }
 </script>
 
@@ -58,8 +74,16 @@ const handleEnterSearch = () => {
           class="searchbar"
           type="text"
           title="Search"
+          placeholder="Paste your missing url or keywords"
+          @input="calculateTipShow"
           @keyup.enter="handleEnterSearch"
       />
+      <img :src="search"
+           @click="handleEnterSearch"
+           class="search-icon" title="Search icon"/>
+      <img :src="enter"
+           v-show="enterIconShow"
+           class="search-tip" />
     </div>
     <div class="buttons">
       <button
@@ -114,7 +138,7 @@ const handleEnterSearch = () => {
   height: 46px;
   border: 1px solid #dfe1e5;
   border-radius: 24px;
-  padding: 0 20px 0 50px;
+  padding: 0 40px 0 50px;
   font-size: 16px;
   outline: none;
   box-shadow: 0 1px 6px rgba(32, 33, 36, 0.08);
@@ -132,6 +156,17 @@ const handleEnterSearch = () => {
   top: 50%;
   transform: translateY(-50%);
   color: #9aa0a6;
+  width: 20px;
+  height: 20px;
+}
+
+.search-tip {
+  color: #70757a;
+  font-size: 10px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 20px;
   height: 20px;
 }
@@ -169,18 +204,45 @@ const handleEnterSearch = () => {
   color: #70757a;
   font-size: 14px;
   border-top: 1px solid #dadce0;
+  a {
+    color: hsla(160, 100%, 37%, 1);
+    text-decoration: none;
+    padding: 0;
+    position: relative;
+    border: 0;
+    text-decoration-style: dashed;
+  }
+
+  a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0.5em;
+    bottom: 2px;
+    left: 4px;
+    width: 100%;
+    --bg-opacity: .75;
+    background-color: #70757a;
+    opacity: .5;
+    transition: transform .3s ease;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+  a:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  a:hover{
+    text-decoration: none;
+  }
 }
 
-.footer > a {
-  color: #70757a;
-  text-decoration: none;
-  padding: 0;
-}
-
-.footer > a:hover {
-  text-decoration: underline;
-}
-
+.voice{
+   height:20px;
+   position:relative;
+   top:5px;
+   left:10px;
+ }
 
 /* 响应式设计 */
 @media (max-width: 600px) {
