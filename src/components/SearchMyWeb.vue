@@ -1,71 +1,81 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import { ref } from "vue";
 
 interface SearchMeta {
-  name: string
-  value: string
+  name: string;
+  value: string;
 }
 
 const SEARCH_TIP_COLUMN = ref<SearchMeta[]>([
   {
     name: "archive.org",
-    value: "https://web.archive.org/web/*/"
+    value: "https://web.archive.org/web/*/",
   },
   {
     name: "archive.is",
-    value: "http://archive.is/"
-  }
-])
-var searchBarText = '';
+    value: "http://archive.is/",
+  },
+]);
+var searchBarText = "";
 const isBlank = (param: string) => {
-  console.log(param)
-  return param.trim().length === 0
-}
+  console.log(param);
+  return param.trim().length === 0;
+};
 const openNewTab = (url: string) => {
-  window.open(url, '_blank')
-}
+  window.open(url, "_blank");
+};
 const HandleJumpUrl = (index: number) => {
   if (isBlank(searchBarText)) {
     return;
   }
   const url = SEARCH_TIP_COLUMN.value[index]?.value;
-  var targetUrl = url + searchBarText.trim()
+  var targetUrl = url + searchBarText.trim();
   if (index === 0) {
     // archive.org
-    targetUrl += '*'
+    targetUrl += "*";
   }
-  console.log(targetUrl)
-  openNewTab(targetUrl)
-}
+  console.log(targetUrl);
+  openNewTab(targetUrl);
+};
 </script>
 
 <template>
   <div class="container">
-<!--    <header>-->
-<!--      <ul>-->
-<!--        <li><a class="links" href="#user"><button class="signbutton" type="button">Sign in</button></a></li>-->
-<!--        <li><a href="#grid"><img class="grid" src="https://cdn3.iconfinder.com/data/icons/navigation-and-settings/24/Material_icons-01-11-512.png" title="Google apps"></a></li>-->
-<!--        <li><a href="/about">About</a></li>-->
-<!--      </ul>-->
-<!--    </header>-->
+    <!--    <header>-->
+    <!--      <ul>-->
+    <!--        <li><a class="links" href="#user"><button class="signbutton" type="button">Sign in</button></a></li>-->
+    <!--        <li><a href="#grid"><img class="grid" src="https://cdn3.iconfinder.com/data/icons/navigation-and-settings/24/Material_icons-01-11-512.png" title="Google apps"></a></li>-->
+    <!--        <li><a href="/about">About</a></li>-->
+    <!--      </ul>-->
+    <!--    </header>-->
     <div class="logo">
-      <img alt="Google" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+      <img
+        alt="Google"
+        src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+      />
     </div>
     <div class="bar">
-      <input v-model="searchBarText"
-             class="searchbar" type="text" title="Search">
+      <input
+        v-model="searchBarText"
+        class="searchbar"
+        type="text"
+        title="Search"
+      />
     </div>
     <div class="buttons">
-      <button v-for="(column,index) in SEARCH_TIP_COLUMN"
-              @click="HandleJumpUrl(index)"
-              class="button" type="button">
+      <button
+        v-for="(column, index) in SEARCH_TIP_COLUMN"
+        @click="HandleJumpUrl(index)"
+        class="button"
+        type="button"
+      >
         {{ column.name }}
       </button>
     </div>
 
     <footer class="footer">
       Made with feet, so feel free to give me issues
-      <br>
+      <br />
       <a href="/about">About</a> |
       <a href="https://github.com/bGZo/">bGZo</a>@2025
     </footer>
@@ -110,7 +120,8 @@ const HandleJumpUrl = (index: number) => {
   transition: box-shadow 0.3s ease;
 }
 
-.searchbar:hover, .searchbar:focus {
+.searchbar:hover,
+.searchbar:focus {
   box-shadow: 0 1px 10px rgba(32, 33, 36, 0.18);
 }
 
@@ -181,7 +192,8 @@ const HandleJumpUrl = (index: number) => {
   text-decoration: underline;
 }
 
-.footer-links-left, .footer-links-right {
+.footer-links-left,
+.footer-links-right {
   display: flex;
 }
 
@@ -198,10 +210,9 @@ const HandleJumpUrl = (index: number) => {
     gap: 10px;
   }
 
-  .footer-links-left, .footer-links-right {
+  .footer-links-left,
+  .footer-links-right {
     justify-content: center;
   }
 }
-
-
 </style>

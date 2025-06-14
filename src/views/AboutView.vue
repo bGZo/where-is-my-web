@@ -1,11 +1,10 @@
 <script setup lang="ts">
 // import readme from '../../README.md';
-const aboutContent = ''
+const aboutContent = "";
 </script>
 
-
 <template>
-  {{aboutContent}}
+  {{ aboutContent }}
 </template>
 
 <style>
