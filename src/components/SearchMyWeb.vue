@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import {ref} from "vue";
+import logo from "/src/assets/where-is-my-web-light.excalidraw.svg"
 
 interface SearchMeta {
   name: string;
@@ -24,7 +25,7 @@ const isBlank = (param: string) => {
 const openNewTab = (url: string) => {
   window.open(url, "_blank");
 };
-const HandleJumpUrl = (index: number) => {
+const handleJumpUrl = (index: number) => {
   if (isBlank(searchBarText)) {
     return;
   }
@@ -37,6 +38,10 @@ const HandleJumpUrl = (index: number) => {
   console.log(targetUrl);
   openNewTab(targetUrl);
 };
+const handleEnterSearch = () => {
+  handleJumpUrl(0)
+  handleJumpUrl(1)
+}
 </script>
 
 <template>
@@ -50,24 +55,25 @@ const HandleJumpUrl = (index: number) => {
     <!--    </header>-->
     <div class="logo">
       <img
-        alt="Google"
-        src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+          alt="Logo"
+          :src="logo"
       />
     </div>
     <div class="bar">
       <input
-        v-model="searchBarText"
-        class="searchbar"
-        type="text"
-        title="Search"
+          v-model="searchBarText"
+          class="searchbar"
+          type="text"
+          title="Search"
+          @keyup.enter="handleEnterSearch"
       />
     </div>
     <div class="buttons">
       <button
-        v-for="(column, index) in SEARCH_TIP_COLUMN"
-        @click="HandleJumpUrl(index)"
-        class="button"
-        type="button"
+          v-for="(column, index) in SEARCH_TIP_COLUMN"
+          @click="handleJumpUrl(index)"
+          class="button"
+          type="button"
       >
         {{ column.name }}
       </button>
@@ -75,7 +81,7 @@ const HandleJumpUrl = (index: number) => {
 
     <footer class="footer">
       Made with feet, so feel free to give me issues
-      <br />
+      <br/>
       <a href="/about">About</a> |
       <a href="https://github.com/bGZo/">bGZo</a>@2025
     </footer>
@@ -94,12 +100,12 @@ const HandleJumpUrl = (index: number) => {
 }
 
 .logo {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
 .logo img {
-  height: 92px;
+  height: 180px;
 }
 
 .bar {
@@ -170,32 +176,16 @@ const HandleJumpUrl = (index: number) => {
   border-top: 1px solid #dadce0;
 }
 
-.country {
-  padding-bottom: 15px;
-  border-bottom: 1px solid #dadce0;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding-top: 15px;
-}
-
-.footer-links a {
+.footer > a {
   color: #70757a;
   text-decoration: none;
   padding: 0 10px;
 }
 
-.footer-links a:hover {
+.footer > a:hover {
   text-decoration: underline;
 }
 
-.footer-links-left,
-.footer-links-right {
-  display: flex;
-}
 
 /* 响应式设计 */
 @media (max-width: 600px) {
@@ -204,15 +194,5 @@ const HandleJumpUrl = (index: number) => {
     width: 100%;
   }
 
-  .footer-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .footer-links-left,
-  .footer-links-right {
-    justify-content: center;
-  }
 }
 </style>
