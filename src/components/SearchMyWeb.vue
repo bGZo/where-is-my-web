@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {nextTick, ref} from "vue";
-import logo from "/src/assets/where-is-my-web-light.excalidraw.svg"
-import search from "/src/assets/search.svg"
-import enter from "/src/assets/enter.svg"
+import { nextTick, ref } from "vue";
+import logo from "/src/assets/where-is-my-web-light.excalidraw.svg";
+import search from "/src/assets/search.svg";
+import enter from "/src/assets/enter.svg";
 
 // 变量区
 
@@ -46,10 +46,10 @@ const handleJumpUrl = (index: number) => {
   openNewTab(targetUrl);
 };
 const handleEnterSearch = () => {
-  handleJumpUrl(0)
-  handleJumpUrl(1)
-}
-const calculateTipShow = async () =>{
+  handleJumpUrl(0);
+  handleJumpUrl(1);
+};
+const calculateTipShow = async () => {
   // NOTE:
   // VUE2 using following:
   // this.$set(enterIconShow, !isBlank(searchBarText))
@@ -57,49 +57,51 @@ const calculateTipShow = async () =>{
   // enterIconShow = ref(!isBlank(searchBarText))
   // enterIconShow = ref(true);
   enterIconShow.value = !isBlank(searchBarText); // NOTE: 通过 .value 修改 ref 的值
-}
+};
 </script>
 
 <template>
   <div class="container">
     <div class="logo">
-      <img
-          alt="Logo"
-          :src="logo"
-      />
+      <img alt="Logo" :src="logo" />
     </div>
     <div class="bar">
       <input
-          v-model="searchBarText"
-          class="searchbar"
-          type="text"
-          title="Search"
-          placeholder="Paste your missing url or keywords"
-          @input="calculateTipShow"
-          @keyup.enter="handleEnterSearch"
+        v-model="searchBarText"
+        class="searchbar"
+        type="text"
+        title="Search"
+        placeholder="Paste your missing url or keywords"
+        @input="calculateTipShow"
+        @keyup.enter="handleEnterSearch"
       />
-      <img :src="search"
-           @click="handleEnterSearch"
-           class="search-icon" title="Search icon"/>
-      <img :src="enter"
-           v-show="enterIconShow"
-           class="search-tip" />
+      <img
+        :src="search"
+        @click="handleEnterSearch"
+        class="search-icon"
+        title="Search icon"
+      />
+      <img :src="enter" v-show="enterIconShow" class="search-tip" />
     </div>
     <div class="buttons">
       <button
-          v-for="(column, index) in SEARCH_TIP_COLUMN"
-          @click="handleJumpUrl(index)"
-          class="button"
-          type="button"
+        v-for="(column, index) in SEARCH_TIP_COLUMN"
+        @click="handleJumpUrl(index)"
+        class="button"
+        type="button"
       >
         {{ column.name }}
       </button>
     </div>
 
     <footer class="footer">
-      Service inspired by my <a href="https://bgzo.github.io/vault/how-to/archive-or-cache-web-on-internet">notes</a>.
-      Feel free to give me <a href="https://github.com/bGZo/where-is-my-web/issues">issues</a>
-      <br/>
+      Service inspired by my
+      <a
+        href="https://bgzo.github.io/vault/how-to/archive-or-cache-web-on-internet"
+        >notes</a
+      >. Feel free to give me
+      <a href="https://github.com/bGZo/where-is-my-web/issues">issues</a>
+      <br />
       Made by <a href="https://github.com/bGZo/">bGZo</a> @ 2025
     </footer>
   </div>
@@ -219,10 +221,10 @@ const calculateTipShow = async () =>{
     bottom: 2px;
     left: 4px;
     width: 100%;
-    --bg-opacity: .75;
+    --bg-opacity: 0.75;
     background-color: #70757a;
-    opacity: .5;
-    transition: transform .3s ease;
+    opacity: 0.5;
+    transition: transform 0.3s ease;
     transform: scaleX(0);
     transform-origin: bottom right;
   }
@@ -230,17 +232,17 @@ const calculateTipShow = async () =>{
     transform: scaleX(1);
     transform-origin: bottom left;
   }
-  a:hover{
+  a:hover {
     text-decoration: none;
   }
 }
 
-.voice{
-   height:20px;
-   position:relative;
-   top:5px;
-   left:10px;
- }
+.voice {
+  height: 20px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
 
 /* 响应式设计 */
 @media (max-width: 600px) {
@@ -248,6 +250,5 @@ const calculateTipShow = async () =>{
     flex-direction: column;
     width: 100%;
   }
-
 }
 </style>
