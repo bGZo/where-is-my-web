@@ -1,20 +1,21 @@
-# where is my web
+# Where is my web
 
-This template should help get you started developing with Vue 3 in Vite.
+![](https://raw.githack.com/bGZo/assets/dev/2025/202506150059983.png)
 
-## Recommended IDE Setup
+This application helps you found some page had gone in one click.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+If you don't use archive extension or singleFile, this could be help you search on archive.is and archive.org to found something.
 
-## Type Support for `.vue` Imports in TS
+## Roadmap
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- [ ] Url status check
+- [ ] More services if possible.
+- [ ] API quick jump for users
+- [ ] Embed this readme to web page.
 
-## Customize configuration
+## Quick start
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+###  Setup
 
 ```sh
 npm install
@@ -44,5 +45,9 @@ npm run test:unit
 npm run lint
 ```
 
-export class html{
-}
+
+## Thanks
+
+1. Favicon using https://github.com/ruisaraiva19/favycon
+2. Logo using https://excalidraw.com
+3. WebStorm
