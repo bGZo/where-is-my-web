@@ -4,7 +4,7 @@
 
 This application helps you found some page had gone in one click.
 
-If you don't use archive extension or singleFile, this could be help you search on archive.is and archive.org to found something.
+If you don't use archive extensions, like singleFile or obsidian-clipper, this could be help you search some related contents on https://archive.is and https://archive.org.
 
 ## Roadmap
 
