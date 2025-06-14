@@ -46,13 +46,6 @@ const handleEnterSearch = () => {
 
 <template>
   <div class="container">
-    <!--    <header>-->
-    <!--      <ul>-->
-    <!--        <li><a class="links" href="#user"><button class="signbutton" type="button">Sign in</button></a></li>-->
-    <!--        <li><a href="#grid"><img class="grid" src="https://cdn3.iconfinder.com/data/icons/navigation-and-settings/24/Material_icons-01-11-512.png" title="Google apps"></a></li>-->
-    <!--        <li><a href="/about">About</a></li>-->
-    <!--      </ul>-->
-    <!--    </header>-->
     <div class="logo">
       <img
           alt="Logo"
